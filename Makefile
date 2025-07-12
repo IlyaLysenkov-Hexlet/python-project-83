@@ -13,3 +13,14 @@ build:
 
 render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
+
+test-cov:
+	poetry run coverage run -m pytest
+	poetry run coverage xml -o coverage.xml
+
+test-coverage:
+	make test-cov
+
+check:
+	make lint
+	make test

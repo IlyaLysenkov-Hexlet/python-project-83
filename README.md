@@ -51,5 +51,3 @@ make dev
 ```python3
 make render-start
 ```
-
-
