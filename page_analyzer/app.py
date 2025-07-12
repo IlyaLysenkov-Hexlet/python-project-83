@@ -104,6 +104,7 @@ def get_check_site(id):
 def no_page(error):
     return render_template('nopage.html'), 404
 
+
 if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5000))
