@@ -14,6 +14,9 @@ build:
 render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
 
+test:
+	pytest
+
 test-cov:
 	uv run coverage run -m pytest
 	uv run coverage xml -o coverage.xml
