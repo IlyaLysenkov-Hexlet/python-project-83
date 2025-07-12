@@ -18,5 +18,5 @@ dependencies = [
 [dependency-groups]
 dev = [
     "ruff>=0.9.3",
+    "pytest"
 ]
-dev = ["pytest"]
