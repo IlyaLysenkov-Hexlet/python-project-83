@@ -1,0 +1,21 @@
+[project]
+name = "hexlet-code"
+version = "0.1.0"
+description = "Made by Lysenkov Ilya"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "bs4",
+    "flask>=3.1.0",
+    "gunicorn>=23.0.0",
+    "more-itertools>=10.5.0",
+    "psycopg2-binary>=2.9.10",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+    "validators>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.3",
+]
