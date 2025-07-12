@@ -21,6 +21,9 @@ test-cov:
 test-coverage:
 	make test-cov
 
+lint:
+    poetry run ruff check .
+
 check:
 	make lint
 	make test
