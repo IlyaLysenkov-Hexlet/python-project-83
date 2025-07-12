@@ -1,32 +1,57 @@
 name: Python CI
 
 on:
-  - push
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # нужно для SonarCloud
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install uv
+          pip install uv pytest pytest-cov
           make install
-      - name: Run linter # and pytest
+      - name: Run linter and tests with coverage
         run: |
-          make lint 
+          make lint
+          uv run coverage run -m pytest
+          uv run coverage xml -o coverage.xml  # создаём отчёт coverage.xml
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage.xml
+
   sonarqube:
-    name: SonarQube
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth:
+          fetch-depth: 0
+      - name: Download coverage report
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-report
+          path: ./
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.projectKey=IlyaLysenkov-Hexlet_python-project-83
+            -Dsonar.organization=ilyalysenkov-hexlet
+            -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.coverage.exclusions=tests/**
+            -Dsonar.exclusions=tests/**
