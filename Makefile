@@ -15,14 +15,14 @@ render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
 
 test-cov:
-	poetry run coverage run -m pytest
-	poetry run coverage xml -o coverage.xml
+	uv run coverage run -m pytest
+	uv run coverage xml -o coverage.xml
 
 test-coverage:
 	make test-cov
 
 lint:
-	poetry run ruff check .
+	uv run ruff check .
 
 check:
 	make lint
