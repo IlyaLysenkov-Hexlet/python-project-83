@@ -1,7 +1,8 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/IlyaLysenkov-Hexlet/python-project-83/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/IlyaLysenkov-Hexlet/python-project-83/actions)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=IlyaLysenkov-Hexlet_python-project-83&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=IlyaLysenkov-Hexlet_python-project-83)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=IlyaLysenkov-Hexlet_python-project-83&metric=coverage)](https://sonarcloud.io/summary/new_code?id=IlyaLysenkov-Hexlet_python-project-83)
+[![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=IlyaLysenkov-Hexlet_python-project-83&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=IlyaLysenkov-Hexlet_python-project-83)
+
 
 # Анализатор страниц
 
